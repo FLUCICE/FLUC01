@@ -1,0 +1,32 @@
+def read_numbers():
+    s = input("Введите числа через пробел: ").strip()
+    if not s:
+        return []
+    return [float(x) for x in s.split()]
+
+def mean(nums):
+    return sum(nums) / len(nums) if nums else 0.0
+
+def median(nums):
+    n = len(nums)
+    if n == 0:
+        return 0.0
+    nums_sorted = sorted(nums)
+    mid = n // 2
+    if n % 2 == 1:
+        return nums_sorted[mid]
+    else:
+        return (nums_sorted[mid - 1] + nums_sorted[mid]) / 2
+
+def main():
+    nums = read_numbers()
+    if not nums:
+        print("Числа не введены.")
+        return
+    nums_sorted = sorted(nums)
+    print("Отсортированный список:", nums_sorted)
+    print("Среднее значение:", mean(nums))
+    print("Медиана:", median(nums))
+
+if __name__ == "__main__":
+    main()
